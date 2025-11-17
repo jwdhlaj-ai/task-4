@@ -1,0 +1,472 @@
+*{
+    padding: 0;
+    margin: 0;
+    
+}
+
+
+header{
+ 
+    background-image: url(drew-coffman-1872.jpg);
+width: 100%;
+    height: 100vh;
+       background-size: cover;
+       background-position: 100% 100%;
+       background-repeat: no-repeat;
+       color: #e9d0a8;
+      
+}
+
+header .word{
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+   
+}
+header .word h2{
+margin-top: 120px;
+font-size: xx-large;
+}
+header .word h1{
+margin-top: 30px;
+font-size: 55px;
+}
+header .word p{
+    margin-top: 10px;
+    font-size: large;
+}
+nav{
+     display: flex;
+justify-content: space-between;
+}
+nav div ul{
+    margin-top: 30px;
+    font-size: large;
+    display: flex;
+    justify-content: center;
+    list-style:none ;
+}
+nav div ul li{
+margin: 20px;
+transition: 1s;
+}
+nav div ul li:hover{
+    transform: scale(2);
+}
+nav div ul li a{
+    text-decoration: none;
+    color: #e9d0a8;
+}
+
+a{
+    transition: 9s;
+}
+
+
+
+.hederdiv{
+    display: flex;
+    justify-content: center;
+    margin: 50px;
+    text-align: center;
+    
+}
+.hederdiv .div1{
+    padding-top: 0px;
+    width: 190px;
+    height: 30px;
+    margin-right:  20px; ;
+    border: solid;
+    border-radius: 50px;
+    transition: 2s;
+}
+.hederdiv .div1:hover{
+    background-color: #e9d0a8;
+    transform: scale(1.1);
+ font-size:20px ;
+}
+.hederdiv .div1 a{
+    text-decoration: none;
+    color: white;
+}
+.hederdiv .div2{
+     transition: 2s;
+   
+    padding-top: 0px;
+     width: 190px;
+    height: 30px;
+    margin-left:  20px; ;
+    border: solid;
+    border-radius: 50px;
+}
+.hederdiv .div2:hover{
+     background-color: #e9d0a8;
+    transform: scale(1.1);
+    font-size:20px ;
+}
+.hederdiv .div2 a{
+    text-decoration: none;
+    color: white;
+}
+.section1{
+    margin-top: 90px;
+    display: flex;
+    justify-content: space-around;
+}
+.section1 img{
+    height: 450px;
+    transition: 2s;
+    border-radius: 50%;
+  
+}
+.section1 img:hover{
+      transform: scale(1.1);
+   
+ border-radius: 10px;
+}
+
+.section1 .colom{
+    margin-left: 40px;
+ display: flex;
+ flex-flow: column;   
+}
+.section1 h2{
+font-size: 40px;
+margin-top: 50px;
+  
+}
+.section1 .p1{
+    margin-top: 10px;
+    font-size: large;
+    opacity: 0.5;
+}
+.section1 .p2{
+    margin-top: 20px;
+}
+.section1 .p2 i{
+    margin: 10px;
+}
+.section1 .p2 i:hover{
+color: red;
+}
+
+.section2{
+    margin-top: 90px;
+    display: flex;
+    justify-content: space-around;
+}
+.section2 img{
+    height: 350px;
+    transition: 2s;
+    border-radius: 50%;
+}
+.section2 img:hover{
+     transform: scale(1.1);
+    border-radius: 10px;
+}
+
+
+.section2 .mg1 p:hover{
+ transform: scale(1.1);
+    border-radius: 10px;
+}
+.section2 .colom{
+    margin-right: 90px;
+ display: flex;
+ flex-flow: column;   
+}
+.section2 h2{
+font-size: 40px;
+margin-top: 80px;
+  
+}
+.section2 .p1{
+    margin-top: 50px;
+    font-size: large;
+    opacity: 0.5;
+}
+.section3{
+ 
+    background-color: #352F2F;
+    color: white;
+    height: 190px;
+    width: 100%;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+}
+
+.section3 h2{
+    font-size: xx-large;
+    margin-top: 80px;
+    margin-bottom: 30px;
+}
+.section4{
+      background-color: #352F2F;
+    color: white;
+    height: 650px;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+}
+.section4 div{
+    
+    margin: 30px;
+    background-color: #0c0c0c;
+width: 400px;
+height: 450px;
+border-radius: 20px;
+text-align: center;
+align-items: center;
+justify-content: center;
+transition: 2s;
+}
+
+.section4 div:hover{
+transform: scale(1.2);
+
+}
+
+
+.section4 .div1 img{
+    margin-top: 10px;
+    width: 190px;
+    height: 190px;
+    border-radius: 20px;
+}
+.section4 .div1 h2{
+    margin-top: 20px;
+font-size: 35px;
+}
+.section4 .div1 p{
+margin-top: 20px;
+font-size: large;
+}
+
+.section4 .div1 h3 {
+    color: red;
+font-size: 30px;
+margin-top: 50px;
+}
+.section4 .div1 h3 del{
+    font-size: large;
+    margin-right: 15px;
+}
+
+
+
+
+.section4 .div2 img{
+    margin-top: 10px;
+    width: 180px;
+    height: 190px;
+    border-radius: 20px;
+}
+.section4 .div2 h2{
+    margin-top: 20px;
+font-size: 35px;
+}
+.section4 .div2 p{
+margin-top: 20px;
+font-size: large;
+}
+
+.section4 .div2 h3 {
+    color: red;
+font-size: 30px;
+margin-top: 50px;
+}
+.section4 .div2 h3 del{
+    font-size: large;
+    margin-right: 15px;
+}
+
+
+
+
+.section4 .div3 img{
+    margin-top: 10px;
+    width: 180px;
+    height: 190px;
+    border-radius: 20px;
+}
+.section4 .div3 h2{
+    margin-top: 20px;
+font-size: 35px;
+}
+.section4 .div3 p{
+margin-top: 20px;
+font-size: large;
+}
+
+.section4 .div3 h3 {
+    color: red;
+font-size: 30px;
+margin-top: 50px;
+}
+.section4 .div3 h3 del{
+    font-size: large;
+    margin-right: 15px;
+}
+
+
+.section5{ 
+    background-color: #352F2F;
+    color: #e9d0a8;
+    height: 180vh;
+    width: 100%;
+    text-align: center;
+    justify-content: center;
+
+}
+
+.section5  .div1 p{
+    
+font-size: large;
+padding-top: 20px;
+}
+.section5 .div1 h2{
+font-size: 30px;
+margin-top: 20px;
+
+}
+.section5 .div1 ul{
+    margin-top: 60px;
+    margin-bottom: 30px;
+display: flex;
+list-style: none;
+justify-content: space-around;
+font-size: 20px;
+}
+.section5 .div1 ul li a{
+text-decoration: none;
+color: #e9d0a8;
+}
+
+
+.section5 .div2 {
+margin-top: 40px;
+    display: flex;
+    justify-content: space-around;
+}
+.section5 .div2 img{
+    
+    margin-top: 10px;
+    width: 350px;
+    height: 290px;
+    border-radius: 20px;
+    transition: 2s;
+}
+.section5 .div2 img:hover{
+transform: scale(1.2)
+
+
+}
+
+.section5 .div3{
+    display: flex;
+    justify-content: space-around;
+   
+}
+.section5 .div3 div h2{
+    margin-top: 10px;
+    font-size: 30px;
+}
+.section5 .div3 div p{
+    margin-top: 10px;
+    font-size: 20px;
+}
+
+.section5 .div3 .red{
+    color: red;
+    margin-top: 10px;
+    font-size: 20px;
+}
+
+
+.section5 .div4{
+margin-top: 40px;
+    display: flex;
+    justify-content: space-around;
+}
+.section5 .div4 img{
+    
+    margin-top: 10px;
+    width: 350px;
+    height: 290px;
+    border-radius: 20px;
+    transition: 2s;
+}
+.section5 .div4 img:hover{
+transform: scale(1.2)
+
+
+}
+
+.section5 .div5{
+    display: flex;
+    justify-content: space-around;
+   
+}
+.section5 .div5 div h2{
+    margin-top: 10px;
+    font-size: 30px;
+}
+.section5 .div5 div p{
+    margin-top: 10px;
+    font-size: 20px;
+}
+
+.section5 .div5 .red{
+    color: red;
+    margin-top: 10px;
+    font-size: 20px;
+}
+
+.section6{
+    height: 70vh;
+    width: 100%;
+    text-align: center;
+    display: flex;
+    justify-content: space-around;
+margin-top: 50px;
+}
+
+.section6 .div1{
+
+
+justify-self: left;
+}
+.section6 .div1 ul li{
+    list-style: none;
+margin: 20px;
+justify-self: left;
+}
+.section6 .div1 h2{
+    margin-top: 20px;
+    justify-self: left;
+}
+.section6 .div1 p{
+    margin-top: 30px;
+    font-size: larger;
+    justify-self: left;
+}
+.section7{
+    background-color: #1E1A11;
+    color: #EAD9B3;
+    height: 65vh;
+    display: flex;
+    justify-content: space-around;
+}
+ .section7 div h2{
+    font-size: 35px;
+ }
+  .section7 div p{
+    font-size: 20px;
+    margin-top: 10px;
+ }
+.section7 ul{
+    list-style-type: none;
+}
