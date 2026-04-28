@@ -1,590 +1,826 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="bootstrap.css">
-    <link rel="stylesheet" href="all.css">
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <title>Family Bakery</title>
+    <!-- Bootstrap CSS (User Requested) -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <!-- FontAwesome CDN for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* --- Global Reset & Base Styles --- */
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
 
+        body {
+            font-family: sans-serif;
+            overflow-x: hidden;
+            background-color: #fff;
+            color: #333;
+        }
+
+        /* --- Design Principles Integration --- */
+        
+        /* Easing Styles & Color Variables */
+        :root {
+            --primary-bg: #352F2F;
+            --secondary-bg: #1E1A11;
+            --accent-color: #e9d0a8;
+            --accent-light: #EAD9B3;
+            --card-bg: #0c0c0c;
+            --price-color: red;
+            --ease-bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55); /* Pop-out/Anticipation */
+            --ease-smooth: cubic-bezier(0.25, 0.46, 0.45, 0.94); /* Feedback */
+        }
+
+        a {
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        /* Simultaneous Contrast: Warm Cream text vs Dark Backgrounds */
+        
+        /* --- Header Section --- */
+        header {
+            background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('img/drew-coffman-1872.jpg');
+            width: 100%;
+            min-height: 100vh;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            color: var(--accent-color);
+            position: relative;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 5%;
+            position: absolute;
+            width: 100%;
+            top: 0;
+            z-index: 10;
+        }
+
+        nav div img {
+            max-width: 150px;
+            /* Assuming the logo is light/transparent or handled by CSS if needed */
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 20px;
+        }
+
+        nav ul li a {
+            color: var(--accent-color);
+            font-weight: bold;
+            font-size: 1.1rem;
+            position: relative;
+        }
+
+        /* Feedback Style: Underline animation */
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--accent-color);
+            transition: width 0.3s var(--ease-smooth);
+        }
+
+        nav ul li:hover a::after {
+            width: 100%;
+        }
+
+        nav ul li:hover {
+            transform: scale(1.05);
+        }
+
+        .word {
+            display: flex;
+            flex-flow: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            height: 80vh;
+        }
+
+        .word h2 {
+            font-size: 2.5rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .word h1 {
+            font-size: 4rem;
+            margin: 20px 0;
+            font-weight: 800;
+        }
+
+        .word p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        .hederdiv {
+            display: flex;
+            justify-content: center;
+            margin-top: 30px;
+            gap: 20px;
+        }
+
+        /* Anticipation Style */
+        .hederdiv div {
+            padding: 15px 40px;
+            border: 2px solid var(--accent-color);
+            border-radius: 50px;
+            transition: transform 0.4s var(--ease-bounce), background-color 0.3s ease, color 0.3s ease;
+            cursor: pointer;
+        }
+
+        .hederdiv div a {
+            color: var(--accent-color);
+            font-weight: bold;
+        }
+
+        .hederdiv div:hover {
+            background-color: var(--accent-color);
+            transform: scale(1.1);
+        }
+
+        .hederdiv div:hover a {
+            color: var(--primary-bg);
+        }
+
+        /* --- Shared Section Styles --- */
+        section {
+            padding: 80px 10%;
+            overflow: hidden;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: var(--primary-bg);
+        }
+
+        /* --- Section 1 & 2 (Who We Are / Location) --- */
+        .section1, .section2 {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 50px;
+            margin-top: 50px;
+        }
+
+        .img-container {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+        }
+
+        .img-container img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 50%; /* Original Circle Shape */
+            transition: all 0.5s var(--ease-bounce);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        /* Pop-out Effect */
+        .img-container img:hover {
+            transform: scale(1.1);
+            border-radius: 20px; /* Morphs to rounded rect */
+        }
+
+        .colom {
+            flex: 1;
+        }
+
+        .p1 {
+            font-size: 1.1rem;
+            opacity: 0.7;
+            line-height: 1.8;
+            margin-bottom: 30px;
+        }
+
+        .p2 {
+            font-size: 1.2rem;
+            margin: 15px 0;
+            display: flex;
+            align-items: center;
+            color: var(--primary-bg);
+        }
+
+        .p2 i {
+            margin-right: 15px;
+            color: var(--primary-bg);
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+
+        .p2:hover i {
+            color: red;
+            transform: scale(1.2) rotate(10deg);
+        }
+
+        /* --- Section 3 (Our Baking - Title) --- */
+        .section3 {
+            background-color: var(--primary-bg);
+            color: white;
+            height: 200px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            width: 100%;
+        }
+
+        .section3 h2 {
+            color: white;
+            margin: 0;
+        }
+
+        /* --- Section 4 (Offers/Gallery) --- */
+        .section4 {
+            background-color: var(--primary-bg);
+            color: white;
+            padding-bottom: 100px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+        }
+
+        .section4 > div {
+            background-color: var(--card-bg);
+            width: 300px;
+            border-radius: 20px;
+            text-align: center;
+            padding: 20px;
+            transition: all 0.4s var(--ease-bounce);
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .section4 > div:hover {
+            transform: translateY(-15px) scale(1.02);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.5);
+            z-index: 2;
+        }
+
+        .section4 img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 15px;
+            margin-bottom: 20px;
+        }
+
+        .section4 h2 {
+            color: white;
+            font-size: 1.8rem;
+        }
+
+        .section4 p {
+            font-size: 1rem;
+            margin: 15px 0;
+            color: #ccc;
+        }
+
+        .section4 h3 {
+            color: var(--price-color);
+            font-size: 1.5rem;
+            margin-top: 20px;
+        }
+
+        .section4 h3 del {
+            color: #666;
+            font-size: 1rem;
+            margin-right: 10px;
+        }
+
+        /* --- Section 5 (Menu) --- */
+        .section5 {
+            background-color: var(--primary-bg);
+            color: var(--accent-color);
+            padding: 80px 5%;
+        }
+
+        .section5 .div1 {
+            text-align: center;
+        }
+
+        .section5 .div1 h2 {
+            color: var(--accent-color);
+        }
+
+        .section5 .div1 ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            gap: 30px;
+            margin: 40px 0;
+            flex-wrap: wrap;
+        }
+
+        .section5 .div1 ul li a {
+            color: var(--accent-color);
+            font-size: 1.2rem;
+            border-bottom: 2px solid transparent;
+        }
+
+        .section5 .div1 ul li a:hover {
+            border-bottom: 2px solid var(--accent-color);
+        }
+
+        /* Menu Grid Layout */
+        .menu-row {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 60px;
+            flex-wrap: wrap;
+        }
+
+        .menu-item {
+            width: 300px;
+        }
+
+        .menu-item img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 20px;
+            margin-bottom: 15px;
+            transition: transform 0.4s var(--ease-bounce);
+        }
+
+        .menu-item:hover img {
+            transform: scale(1.05);
+        }
+
+        .menu-item h2 {
+            color: var(--accent-color);
+            font-size: 1.5rem;
+        }
+
+        .menu-item p {
+            font-size: 1rem;
+            opacity: 0.8;
+        }
+
+        .red {
+            color: var(--price-color);
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-top: 5px;
+        }
+
+        /* --- Section 6 (Contact) --- */
+        .section6 {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 40px;
+        }
+
+        .section6 .div1 {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .section6 .div1 h2 {
+            color: var(--primary-bg);
+        }
+
+        .section6 .div1 ul {
+            list-style: none;
+            margin-top: 30px;
+        }
+
+        .section6 .div1 ul li {
+            margin: 20px 0;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            color: #555;
+        }
+
+        .section6 .div1 ul li i {
+            margin-right: 15px;
+            color: var(--primary-bg);
+            font-size: 1.2rem;
+            transition: transform 0.3s ease;
+        }
+        
+        .section6 .div1 ul li:hover i {
+            transform: scale(1.2);
+            color: var(--price-color);
+        }
+
+        .section6 .div2 iframe {
+            width: 100%;
+            max-width: 500px;
+            height: 400px;
+            border-radius: 20px;
+            border: none;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        /* --- Section 7 (Footer) --- */
+        .section7 {
+            background-color: var(--secondary-bg);
+            color: var(--accent-light);
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            padding: 80px 5%;
+            gap: 30px;
+        }
+
+        .section7 div {
+            flex: 1;
+            min-width: 250px;
+        }
+
+        .section7 h2 {
+            color: var(--accent-light);
+            font-size: 1.8rem;
+            margin-bottom: 25px;
+        }
+
+        .section7 p {
+            font-size: 1rem;
+            line-height: 1.8;
+            opacity: 0.9;
+        }
+
+        .section7 hr {
+            border: 0;
+            border-top: 1px solid rgba(234, 217, 179, 0.2);
+            margin: 15px 0;
+        }
+
+        .section7 ul {
+            list-style: none;
+        }
+
+        .section7 ul li {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+
+        .section7 ul li i {
+            margin-right: 10px;
+            color: var(--accent-color);
+        }
+
+        /* --- Responsive Design --- */
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                padding: 15px;
+            }
+            
+            nav ul {
+                margin-top: 15px;
+                gap: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .word h1 {
+                font-size: 2.5rem;
+            }
+
+            .hederdiv {
+                flex-direction: column;
+                width: 100%;
+                padding: 0 20px;
+            }
+
+            .section1, .section2 {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .colom {
+                order: 2;
+                margin-left: 0;
+            }
+
+            .img-container {
+                order: 1;
+                margin-bottom: 30px;
+            }
+
+            .section4 > div {
+                width: 100%;
+                max-width: 350px;
+            }
+        }
+    </style>
 </head>
 
 <body>
 
     <main>
-
-
+        <!-- Header -->
         <header>
-
-            <nav id="nav">
+            <nav>
                 <div>
-                    <img src="bakery-light-1.png" alt="">
+                    <!-- Original Logo Path -->
+                    <img src="bakery-light-1.png" alt="Family Bakery Logo">
                 </div>
-
                 <div>
                     <ul>
-                        <li>
-                            <a href="#nav">
-                                Home
-                            </a>
-
-                        </li>
-                        
-                        <li>
-                            <a href="#section1">
-                                Our
-
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#section3">
-                                Offer
-                            </a>
-
-                        </li>
-                        <li>
-                            <a href="#section5">
-                                Gallery
-                            </a>
-
-                        </li>
-                        <li>
-                            <a href="#section6">
-                                Contact
-                            </a>
-
-                        </li>
-                        <li>
-                            <a href="#section7">
-                                About
-                            </a>
-
-                        </li>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#section1">Our Story</a></li>
+                        <li><a href="#section4">Offer</a></li>
+                        <li><a href="#section5">Menu</a></li>
+                        <li><a href="#section6">Contact</a></li>
+                        <li><a href="#section7">About</a></li>
                     </ul>
-
                 </div>
-
             </nav>
 
             <div class="word">
-                <h2>
-                    welcom to
-                </h2>
-
-                <h1>
-                    Family Bakery
-                </h1>
-                <p>
-                    We Re The Biggest, Best Equipped And Most Advanced Bakery In The Greater Los Angeles Area.
-                </p>
+                <h2>welcome to</h2>
+                <h1>Family Bakery</h1>
+                <p>We Re The Biggest, Best Equipped And Most Advanced Bakery In The Greater Los Angeles Area.</p>
             </div>
+            
             <div class="hederdiv">
-
                 <div class="div1">
-                    <a href="#">
-                        learn book a visit
-                    </a>
-
-
+                    <a href="#">Learn More</a>
                 </div>
                 <div class="div2">
-                    <a href="#">
-                        book a avisit
-                    </a>
-
+                    <a href="#">Book A Visit</a>
                 </div>
             </div>
-
-
-
         </header>
 
-
+        <!-- Section 1: Who We Are -->
         <section class="section1" id="section1">
-
-            <div class="img1">
-
-                <img src="cookies800x760.jpg" alt="">
-
-
+            <div class="img-container">
+                <!-- Original Image: cookies800x760.jpg -->
+                <img src="cookies800x760.jpg" alt="Cookies">
             </div>
-
             <div class="colom">
-                <h2>
-                    Who We Are?
-
-                </h2>
+                <h2>Who We Are?</h2>
                 <p class="p1">
-                    Lorem Ipsum Dolor, Sit Amet Consectetur Adipisicing Elit. Assumenda Enim Unde Ea <br>
-                    Corrupti Dolore Expedita Quia Incidunt Praesentium Hic Earum Provident Adipisci <br>
+                    Lorem Ipsum Dolor, Sit Amet Consectetur Adipisicing Elit. Assumenda Enim Unde Ea 
+                    Corrupti Dolore Expedita Quia Incidunt Praesentium Hic Earum Provident Adipisci 
                     Quaerat Aliquid Ipsa, Velit Repellat Nesciunt Voluptates lusto.
-
                 </p>
-                <p class="p2">
-                    <i class="fa-solid fa-users"></i>We Care About Environment
-                </p>
-                <p class="p2">
-                    <i class="fa-solid fa-users"></i>We Are Trusted By Hundreds Of Clients
-                </p>
-                <p class="p2">
-                    <i class="fa-solid fa-users"></i>Social Media Loves Us!
-                </p>
-                <p class="p2">
-                    <i class="fa-solid fa-users"></i>1 This List Is Super Easy To Create.
-                </p>
-
-
-
-
+                <p class="p2"><i class="fa-solid fa-users"></i> We Care About Environment</p>
+                <p class="p2"><i class="fa-solid fa-users"></i> We Are Trusted By Hundreds Of Clients</p>
+                <p class="p2"><i class="fa-solid fa-users"></i> Social Media Loves Us!</p>
+                <p class="p2"><i class="fa-solid fa-users"></i> This List Is Super Easy To Create.</p>
             </div>
-
-
         </section>
 
+        <!-- Section 2: Location -->
         <section class="section2">
-
-
             <div class="colom">
-                <h2>
-                    Our Location
-
-                </h2>
+                <h2>Our Location</h2>
                 <p class="p1">
-                    Lorem Ipsum Dolor Sit Amet Consectetur Adipisicing Elit. Recusandae <br>
-                    Architecto Accusantium Expedita Fugiat Laudantium, Perferendis At Quisquam <br>
-                    Eos Amet Inventore? Tempora Quas, Aliquam Voluptates Sunt Odio <br>
-                    Accusamus! Aliquam Nostrum Rerum Fuga Laborum, Laboriosam Dignissimos <br>
-                    Sit Eveniet Atque, Corrupti Necessitatibus. Explicabo Tenetur. Lorem, Ipsum <br>
-                    Dolor Sit Amet Consectetur Adipisicing Elit. Excepturi Enim Impedit Temporibus <br>
+                    Lorem Ipsum Dolor Sit Amet Consectetur Adipisicing Elit. Recusandae 
+                    Architecto Accusantium Expedita Fugiat Laudantium, Perferendis At Quisquam 
+                    Eos Amet Inventore? Tempora Quas, Aliquam Voluptates Sunt Odio 
+                    Accusamus! Aliquam Nostrum Rerum Fuga Laborum, Laboriosam Dignissimos 
+                    Sit Eveniet Atque, Corrupti Necessitatibus. Explicabo Tenetur. Lorem, Ipsum 
+                    Dolor Sit Amet Consectetur Adipisicing Elit. Excepturi Enim Impedit Temporibus 
                     Aliquam Quis Numquam Eligendi Saepe Quibusdam Veritatis Hic!
-
-
+                </p>
             </div>
-
-            <div class="mg1">
-                <img src="full-2-800x640.jpg" alt="">
-
+            <div class="img-container mg1">
+                <!-- Original Image: full-2-800x640.jpg -->
+                <img src="full-2-800x640.jpg" alt="Bakery Shop">
             </div>
-
         </section>
 
-        <section class="section3" id="section3">
-        
-
+        <!-- Section 3: Baking Title -->
+        <section class="section3">
             <div>
-                <h2>
-                    Our Baking
-
-
-                </h2>
-                <p>
-                    Lorem, Ipsum Dolor Sit Amet Consectetur Adipisicing Elit. Ducimus, Aut!
-
-                </p>
-
+                <h2>Our Baking</h2>
+                <p>Lorem, Ipsum Dolor Sit Amet Consectetur Adipisicing Elit. Ducimus, Aut!</p>
             </div>
-
-
-
         </section>
 
-        <section class="section4">
+        <!-- Section 4: Offers / Cards -->
+        <section class="section4" id="section4">
             <div class="div1">
-                <img src="ben-garratt-134774-600x500.jpg" alt="">
-                <h2>
-                    Superior Breads
-
-                </h2>
+                <!-- Original Image: ben-garratt-134774-600x500.jpg -->
+                <img src="ben-garratt-134774-600x500.jpg" alt="Bread">
+                <h2>Superior Breads</h2>
                 <p>
-                    Lorem Ipsum Dolor Sit Amet Consectetur <br>
-                    Adipisicing Elit. Aut, Aspernatur Velit. <br>
-                    Deserunt Nam Dolor Harum. <br>
+                    Lorem Ipsum Dolor Sit Amet Consectetur 
+                    Adipisicing Elit. Aut, Aspernatur Velit. 
+                    Deserunt Nam Dolor Harum.
                 </p>
-
-                <h3>
-                    <del>
-                        $18.00
-                    </del>
-
-                    $10.00
-
-
-
-                </h3>
+                <h3><del>$18.00</del> $10.00</h3>
             </div>
+            
             <div class="div2">
-                <img src="stas-ovsky-123540-600x500.jpg" alt="">
-                <h2>
-                    Donuts
-
-                </h2>
+                <!-- Original Image: stas-ovsky-123540-600x500.jpg -->
+                <img src="stas-ovsky-123540-600x500.jpg" alt="Donuts">
+                <h2>Donuts</h2>
                 <p>
-                    Lorem Ipsum Dolor Sit Amet Consectetur <br>
-                    Adipisicing Elit. Aut, Aspernatur Velit. <br>
+                    Lorem Ipsum Dolor Sit Amet Consectetur 
+                    Adipisicing Elit. Aut, Aspernatur Velit. 
                     Deserunt Nam Dolor Harum.
                 </p>
-
-                <h3>
-                    <del>
-                        $11.00 $
-                    </del>
-                    $8.00
-
-
-
-
-                </h3>
+                <h3><del>$11.00</del> $8.00</h3>
             </div>
+            
             <div class="div3">
-                <img src="clem-onojeghuo-206832-600x500.jpg" alt="">
-                <h2>
-                    Cookies
-
-                </h2>
+                <!-- Original Image: clem-onojeghuo-206832-600x500.jpg -->
+                <img src="clem-onojeghuo-206832-600x500.jpg" alt="Cookies">
+                <h2>Cookies</h2>
                 <p>
-                    Lorem Ipsum Dolor Sit Amet Consectetur <br>
-                    Adipisicing Elit. Aut, Aspernatur Velit. <br>
+                    Lorem Ipsum Dolor Sit Amet Consectetur 
+                    Adipisicing Elit. Aut, Aspernatur Velit. 
                     Deserunt Nam Dolor Harum.
-
                 </p>
-
-                <h3>
-                    <del>
-                        $24.00
-                    </del>
-
-                    $15.00
-
-                </h3>
-
+                <h3><del>$24.00</del> $15.00</h3>
             </div>
-
-
         </section>
 
+        <!-- Section 5: Menu -->
         <section class="section5" id="section5">
             <div class="div1">
-                <p>
-                    OUR MENU
-                </p>
-
-                <h2>
-                    Bakery Menu
-
-                </h2>
-
+                <p>OUR MENU</p>
+                <h2>Bakery Menu</h2>
                 <ul>
-                    <li>
-                        <a href="#">
-                            cake & tart
-                        </a>
-                    </li>
-                    <li><a href="#">
-                            breads
-                        </a>
-                    </li>
-                    <li><a href="#">
-                            cookies
-                        </a></li>
-                    <li><a href="#">
-                            pastries
-                        </a></li>
-
+                    <li><a href="#">cake & tart</a></li>
+                    <li><a href="#">breads</a></li>
+                    <li><a href="#">cookies</a></li>
+                    <li><a href="#">pastries</a></li>
                 </ul>
-                <p>
-                    MENU
-                </p>
-
-                <h2>
-                    Cake & Tart
-                </h2>
-
-            </div>
-            <div class="div2">
-
-                <div>
-                    <img src="cookies800x760.jpg" alt="">
-                </div>
-                <div>
-                    <img src="cookies.jpg" alt="">
-                </div>
-                <div>
-                    <img src="i (1).webp" alt="">
-                </div>
-
+                <p>MENU</p>
+                <h2>Cake & Tart</h2>
             </div>
 
-            <div class="div3">
-
-                <div>
-                    <h2>
-                        Tart
-                    </h2>
-                    <p>
-                        Lorem, Deren, Trataro, Filede, Nerada
-                    </p>
-                    <p class="red">
-                        $5.95
-                    </p>
+            <!-- Menu Row 1 -->
+            <div class="menu-row div2">
+                <div class="menu-item">
+                    <!-- Original Image: cookies800x760.jpg -->
+                    <img src="cookies800x760.jpg" alt="Tart">
+                    <h2>Tart</h2>
+                    <p>Lorem, Deren, Trataro, Filede, Nerada</p>
+                    <p class="red">$5.95</p>
                 </div>
-                <div>
-                    <h2>
-                        Cookies
-                    </h2>
-                    <p>
-                        Lorem, Deren, Trataro, Filede, Nerada
-
-                    </p>
-
-                    <p class="red">
-                        $14.95
-
-                    </p>
-
-
+                <div class="menu-item">
+                    <!-- Original Image: cookies.jpg -->
+                    <img src="cookies.jpg" alt="Cookies">
+                    <h2>Cookies</h2>
+                    <p>Lorem, Deren, Trataro, Filede, Nerada</p>
+                    <p class="red">$14.95</p>
                 </div>
-                <div>
-                    <h2>
-                        Chocolate
-                    </h2>
-                    <p>
-                        Lorem, Deren, Trataro, Filede, Nerada
-                    </p>
-
-
-                    <p class="red">
-                        $8.95
-
-                    </p>
-                </div>
-
-            </div>
-            <div class="div4">
-
-                <div>
-                    <img src="large_____________.jpg" alt="">
-                </div>
-                <div>
-                    <img src="i.webp" alt="">
-                </div>
-                <div>
-                    <img src="stas-ovsky-123540-600x500.jpg" alt="">
-                </div>
-
-            </div>
-
-            <div class="div5">
-
-                <div>
-                    <h2>
-                        Cupcakes
-                    </h2>
-                    <p>
-                        Lorem, Deren, Trataro, Filede, Nerada
-
-                    </p>
-                    <p class="red">
-                        $12.95
-
-                    </p>
-                </div>
-                <div>
-                    <h2>
-                        Bread
-                    </h2>
-                    <p>
-                        Lorem, Deren, Trataro, Filede, Nerada
-
-                    </p>
-
-                    <p class="red">
-                        $12.95
-
-                    </p>
-
-
-                </div>
-                <div>
-                    <h2>
-                        Donuts
-                    </h2>
-                    <p>
-                        Lorem, Deren, Trataro, Filede, Nerada
-
-                    </p>
-
-
-                    <p class="red">
-                        $9.95
-
-                    </p>
+                <div class="menu-item">
+                    <!-- Original Image: i (1).webp -->
+                    <img src="i (1).webp" alt="Chocolate">
+                    <h2>Chocolate</h2>
+                    <p>Lorem, Deren, Trataro, Filede, Nerada</p>
+                    <p class="red">$8.95</p>
                 </div>
             </div>
 
+            <!-- Menu Row 2 -->
+            <div class="menu-row div4">
+                <div class="menu-item">
+                    <!-- Original Image: large_____________.jpg -->
+                    <img src="large_____________.jpg" alt="Cupcakes">
+                    <h2>Cupcakes</h2>
+                    <p>Lorem, Deren, Trataro, Filede, Nerada</p>
+                    <p class="red">$12.95</p>
+                </div>
+                <div class="menu-item">
+                    <!-- Original Image: i.webp -->
+                    <img src="i.webp" alt="Bread">
+                    <h2>Bread</h2>
+                    <p>Lorem, Deren, Trataro, Filede, Nerada</p>
+                    <p class="red">$12.95</p>
+                </div>
+                <div class="menu-item">
+                    <!-- Original Image: stas-ovsky-123540-600x500.jpg -->
+                    <img src="stas-ovsky-123540-600x500.jpg" alt="Donuts">
+                    <h2>Donuts</h2>
+                    <p>Lorem, Deren, Trataro, Filede, Nerada</p>
+                    <p class="red">$9.95</p>
+                </div>
+            </div>
         </section>
 
+        <!-- Section 6: Contact -->
         <section class="section6" id="section6">
-
             <div class="div1">
-                <h2>
-                    Contact Information
-                </h2>
+                <h2>Contact Information</h2>
                 <p>
-                    Lorem Ipsum Dolor Sit Amet Consectetur Adipisicing Elit. Facere,<br>
+                    Lorem Ipsum Dolor Sit Amet Consectetur Adipisicing Elit. Facere, 
                     Reprehenderit In Nulla Id Consectetur Ut.
-
                 </p>
-
-                <p>
-                    Our Contact Details
-                </p>
+                <p style="margin-top:20px; font-weight:bold;">Our Contact Details</p>
                 <ul>
-                    <li><i class="fa-solid fa-location-dot"></i> Manchester St123-78B,Random 713,UK</li>
-                    <li><i class="fa-solid fa-phone"></i>+20 0155591586244 </li>
-                    <li> <i class="fa-solid fa-headset"></i>015 9842385646558</li>
-                    <li><i class="fa-solid fa-envelope"></i>
-                        Welcome@Gmail.Com </li>
+                    <li><i class="fa-solid fa-location-dot"></i> Manchester St123-78B, Random 713, UK</li>
+                    <li><i class="fa-solid fa-phone"></i> +20 0155591586244</li>
+                    <li><i class="fa-solid fa-headset"></i> 015 9842385646558</li>
+                    <li><i class="fa-solid fa-envelope"></i> Welcome@Gmail.Com</li>
                 </ul>
-
             </div>
-
             <div class="div2">
-
                 <iframe
                     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d13801.424340825975!2d31.2972321458447!3d30.141233897996205!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1458151f6d36a85d%3A0xe67b49ff5fa44da2!2z2YXYs9i32LHYr9iMINi52LHYqCDYp9mE2K3YtdmG2Iwg2YLYs9mFINir2KfZhiDYtNio2LHYpyDYp9mE2K7ZitmF2KnYjCDZhdit2KfZgdi42Kkg2KfZhNmC2YTZitmI2KjZitipIDYyMjcxMDE!5e0!3m2!1sar!2seg!4v1756276634740!5m2!1sar!2seg"
-                    width="400" height="450px" allowfullscreen="" loading="lazy"
+                    allowfullscreen="" loading="lazy"
                     referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>
-
-
-
         </section>
 
+        <!-- Section 7: Footer / About -->
         <section class="section7" id="section7">
-
             <div class="div1">
-
-                <h2>
-                    About Us
-                </h2>
+                <h2>About Us</h2>
                 <p>
-
-
-                    Lorem Ipsum Dolor Sit, Amet Consectetur <br>
-                    Adipisicing Elit. Magnam Fuga <br>
-                    Accusantium Voluptate Totam Unde Fugit, <br>
-                    Ab Ullam. Laudantium, Aut Nesciunt? <br>
-                    <br> <br> <br> <br>
-                    Lorem Ipsum Dolor Sit, Amet Consectetur <br>
-                    Adipisicing Elit. Magnam Fuga <br>
-                    Accusantium Voluptate Totam Unde Fugit, <br>
-                    Ab Ullam. Laudantium, Aut Nesciunt? <br>
-
+                    Lorem Ipsum Dolor Sit, Amet Consectetur 
+                    Adipisicing Elit. Magnam Fuga 
+                    Accusantium Voluptate Totam Unde Fugit, 
+                    Ab Ullam. Laudantium, Aut Nesciunt?
+                    <br><br>
+                    Lorem Ipsum Dolor Sit, Amet Consectetur 
+                    Adipisicing Elit. Magnam Fuga 
+                    Accusantium Voluptate Totam Unde Fugit, 
+                    Ab Ullam. Laudantium, Aut Nesciunt?
                 </p>
-
             </div>
 
             <div class="div2">
-
-                <h2>
-                    Why We Are Special
-                </h2>
-
+                <h2>Why We Are Special</h2>
                 <p>
-
-                <p>
-                    <i class="fa-solid fa-arrow-right"></i>
-                    Our Megical Recipe.
+                    <p><i class="fa-solid fa-arrow-right"></i> Our Megical Recipe.</p>
+                    <hr>
+                    <p><i class="fa-solid fa-arrow-right"></i> We Care About Environment</p>
+                    <hr>
+                    <p><i class="fa-solid fa-arrow-right"></i> We Ar Trusted By Hundreds Of Clients.</p>
+                    <hr>
+                    <p><i class="fa-solid fa-arrow-right"></i> Social Media Loves Us!</p>
+                    <hr>
+                    <p><i class="fa-solid fa-arrow-right"></i> This List Is Super Easy To Create.</p>
+                    <hr>
                 </p>
-                <hr>
-                <p>
-                    <i class="fa-solid fa-arrow-right"></i>
-                    We Care About Environment
-                </p>
-                <hr>
-                <p>
-                    <i class="fa-solid fa-arrow-right"></i>
-                    We Ar Trusted By Hundreds Of Clients.
-                </p>
-                <hr>
-                <p>
-                    <i class="fa-solid fa-arrow-right"></i>
-                    Social Media Loves Us!
-                </p>
-                <hr>
-                <p>
-                    <i class="fa-solid fa-arrow-right"></i>
-                    This List Is Super Easy To Create.
-                </p>
-                <hr>
-                </p>
-
             </div>
 
             <div class="div3">
-
-                <h2>
-                    Opening Hours
-                </h2>
-
+                <h2>Opening Hours</h2>
                 <p>
-
-                <p>
-                    <i class="fa-solid fa-arrow-right"></i>
-                    Monday 10AM-9PM
-                </p>
-                <hr>
-                <p>
-                    <i class="fa-solid fa-arrow-right"></i>
-                    Tuesday 10AM-9PM
-                </p>
-                <hr>
-                <p>
-                    <i class="fa-solid fa-arrow-right"></i>
-                    Wendnesday 10AM-10PM
-                </p>
-                <hr>
-                <p>
-                    <i class="fa-solid fa-arrow-right"></i>
-                    Thursday 10AM-10PM
-                </p>
-                <hr>
-                <p>
-                    <i class="fa-solid fa-arrow-right"></i>
-                    Friday 10AM-9PM
-
-                </p>
-                <hr>
+                    <p><i class="fa-solid fa-arrow-right"></i> Monday 10AM-9PM</p>
+                    <hr>
+                    <p><i class="fa-solid fa-arrow-right"></i> Tuesday 10AM-9PM</p>
+                    <hr>
+                    <p><i class="fa-solid fa-arrow-right"></i> Wednesday 10AM-10PM</p>
+                    <hr>
+                    <p><i class="fa-solid fa-arrow-right"></i> Thursday 10AM-10PM</p>
+                    <hr>
+                    <p><i class="fa-solid fa-arrow-right"></i> Friday 10AM-9PM</p>
+                    <hr>
                 </p>
             </div>
 
-
             <div class="div4">
-
-                <h2>
-                    Contact Details
-                </h2>
-
+                <h2>Contact Details</h2>
                 <p>
-                <ul>
-                    <li><i class="fa-solid fa-location-dot"></i> Manchester St123-78B,Random 713,UK</li> <hr>
-                    <li><i class="fa-solid fa-phone"></i>+20 0155591586244 </li> <hr>
-                    <li> <i class="fa-solid fa-headset"></i>015 9842385646558</li><hr>
-                    <li><i class="fa-solid fa-envelope"></i>
-                        Welcome@Gmail.Com </li><hr>
-                </ul>
-
+                    <ul>
+                        <li><i class="fa-solid fa-location-dot"></i> Manchester St123-78B, Random 713, UK</li>
+                        <hr>
+                        <li><i class="fa-solid fa-phone"></i> +20 0155591586244</li>
+                        <hr>
+                        <li><i class="fa-solid fa-headset"></i> 015 9842385646558</li>
+                        <hr>
+                        <li><i class="fa-solid fa-envelope"></i> Welcome@Gmail.Com</li>
+                        <hr>
+                    </ul>
                 </p>
             </div>
         </section>
 
     </main>
 
-
 </body>
-
 </html>
