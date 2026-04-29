@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Family Bakery</title>
-    <!-- Bootstrap CSS (User Requested) -->
+    <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
     <!-- FontAwesome CDN for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -25,9 +25,6 @@
             color: #333;
         }
 
-        /* --- Design Principles Integration --- */
-        
-        /* Easing Styles & Color Variables */
         :root {
             --primary-bg: #352F2F;
             --secondary-bg: #1E1A11;
@@ -35,8 +32,8 @@
             --accent-light: #EAD9B3;
             --card-bg: #0c0c0c;
             --price-color: red;
-            --ease-bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55); /* Pop-out/Anticipation */
-            --ease-smooth: cubic-bezier(0.25, 0.46, 0.45, 0.94); /* Feedback */
+            --ease-bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            --ease-smooth: cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
 
         a {
@@ -44,11 +41,9 @@
             transition: all 0.3s ease;
         }
 
-        /* Simultaneous Contrast: Warm Cream text vs Dark Backgrounds */
-        
         /* --- Header Section --- */
         header {
-            background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('drew-coffman-1872.jpg');
+            background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('img/drew-coffman-1872.jpg');
             width: 100%;
             min-height: 100vh;
             background-size: cover;
@@ -71,7 +66,6 @@
 
         nav div img {
             max-width: 150px;
-            /* Assuming the logo is light/transparent or handled by CSS if needed */
         }
 
         nav ul {
@@ -87,7 +81,6 @@
             position: relative;
         }
 
-        /* Feedback Style: Underline animation */
         nav ul li a::after {
             content: '';
             position: absolute;
@@ -142,7 +135,6 @@
             gap: 20px;
         }
 
-        /* Anticipation Style */
         .hederdiv div {
             padding: 15px 40px;
             border: 2px solid var(--accent-color);
@@ -177,7 +169,7 @@
             color: var(--primary-bg);
         }
 
-        /* --- Section 1 & 2 (Who We Are / Location) --- */
+        /* --- Section 1 & 2 --- */
         .section1, .section2 {
             display: flex;
             align-items: center;
@@ -195,19 +187,20 @@
         .img-container img {
             max-width: 100%;
             height: auto;
-            border-radius: 50%; /* Original Circle Shape */
+            border-radius: 50%;
             transition: all 0.5s var(--ease-bounce);
             box-shadow: 0 10px 30px rgba(0,0,0,0.1);
         }
 
-        /* Pop-out Effect */
         .img-container img:hover {
             transform: scale(1.1);
-            border-radius: 20px; /* Morphs to rounded rect */
+            border-radius: 20px;
         }
 
+        /* Alignment Fix: Text alignment set to left for readability */
         .colom {
             flex: 1;
+            text-align: left;
         }
 
         .p1 {
@@ -236,7 +229,7 @@
             transform: scale(1.2) rotate(10deg);
         }
 
-        /* --- Section 3 (Our Baking - Title) --- */
+        /* --- Section 3 --- */
         .section3 {
             background-color: var(--primary-bg);
             color: white;
@@ -254,7 +247,7 @@
             margin: 0;
         }
 
-        /* --- Section 4 (Offers/Gallery) --- */
+        /* --- Section 4 --- */
         .section4 {
             background-color: var(--primary-bg);
             color: white;
@@ -314,7 +307,7 @@
             margin-right: 10px;
         }
 
-        /* --- Section 5 (Menu) --- */
+        /* --- Section 5 --- */
         .section5 {
             background-color: var(--primary-bg);
             color: var(--accent-color);
@@ -348,7 +341,6 @@
             border-bottom: 2px solid var(--accent-color);
         }
 
-        /* Menu Grid Layout */
         .menu-row {
             display: flex;
             justify-content: center;
@@ -359,6 +351,7 @@
 
         .menu-item {
             width: 300px;
+            text-align: center; /* Alignment Fix */
         }
 
         .menu-item img {
@@ -391,11 +384,11 @@
             margin-top: 5px;
         }
 
-        /* --- Section 6 (Contact) --- */
+        /* --- Section 6 --- */
         .section6 {
             display: flex;
             justify-content: space-around;
-            align-items: center;
+            align-items: flex-start; /* Alignment Fix: top alignment for text and map */
             flex-wrap: wrap;
             gap: 40px;
         }
@@ -403,6 +396,7 @@
         .section6 .div1 {
             flex: 1;
             min-width: 300px;
+            text-align: left; /* Alignment Fix */
         }
 
         .section6 .div1 h2 {
@@ -443,7 +437,7 @@
             box-shadow: 0 10px 20px rgba(0,0,0,0.1);
         }
 
-        /* --- Section 7 (Footer) --- */
+        /* --- Section 7 --- */
         .section7 {
             background-color: var(--secondary-bg);
             color: var(--accent-light);
@@ -457,6 +451,7 @@
         .section7 div {
             flex: 1;
             min-width: 250px;
+            text-align: left; /* Alignment Fix */
         }
 
         .section7 h2 {
@@ -479,6 +474,7 @@
 
         .section7 ul {
             list-style: none;
+            padding: 0; /* Alignment Fix */
         }
 
         .section7 ul li {
@@ -487,9 +483,17 @@
             align-items: center;
         }
 
-        .section7 ul li i {
+        .section7 ul li i, .section7 .list-item i {
             margin-right: 10px;
             color: var(--accent-color);
+        }
+
+        .section7 .list-item {
+            margin-bottom: 5px;
+            display: flex;
+            align-items: center;
+            font-size: 1rem;
+            line-height: 1.8;
         }
 
         /* --- Responsive Design --- */
@@ -514,6 +518,7 @@
                 flex-direction: column;
                 width: 100%;
                 padding: 0 20px;
+                align-items: center;
             }
 
             .section1, .section2 {
@@ -524,6 +529,7 @@
             .colom {
                 order: 2;
                 margin-left: 0;
+                text-align: center; /* Alignment Fix for mobile */
             }
 
             .img-container {
@@ -534,6 +540,14 @@
             .section4 > div {
                 width: 100%;
                 max-width: 350px;
+            }
+
+            .section6 .div1 {
+                text-align: center; /* Alignment Fix for mobile */
+            }
+
+            .section7 div {
+                text-align: center; /* Alignment Fix for mobile */
             }
         }
     </style>
@@ -546,8 +560,7 @@
         <header>
             <nav>
                 <div>
-                    <!-- Original Logo Path -->
-                    <img src="bakery-light-1.png" alt="Family Bakery Logo">
+                    <img src="img/bakery-light-1.png" alt="Family Bakery Logo">
                 </div>
                 <div>
                     <ul>
@@ -562,9 +575,9 @@
             </nav>
 
             <div class="word">
-                <h2>welcome to</h2>
+                <h2>Welcome to</h2>
                 <h1>Family Bakery</h1>
-                <p>We Re The Biggest, Best Equipped And Most Advanced Bakery In The Greater Los Angeles Area.</p>
+                <p>Crafting warm memories and delicious treats since 1990. Experience the taste of homemade goodness right in the heart of our city.</p>
             </div>
             
             <div class="hederdiv">
@@ -580,20 +593,17 @@
         <!-- Section 1: Who We Are -->
         <section class="section1" id="section1">
             <div class="img-container">
-                <!-- Original Image: cookies800x760.jpg -->
-                <img src="cookies800x760.jpg" alt="Cookies">
+                <img src="img/cookies800x760.jpg" alt="Freshly baked cookies">
             </div>
             <div class="colom">
                 <h2>Who We Are?</h2>
                 <p class="p1">
-                    Lorem Ipsum Dolor, Sit Amet Consectetur Adipisicing Elit. Assumenda Enim Unde Ea 
-                    Corrupti Dolore Expedita Quia Incidunt Praesentium Hic Earum Provident Adipisci 
-                    Quaerat Aliquid Ipsa, Velit Repellat Nesciunt Voluptates lusto.
+                    At Family Bakery, our journey started three generations ago with a simple passion for baking. We use locally sourced ingredients and time-honored recipes passed down from our grandparents. Every loaf of bread and every pastry is made with love, ensuring you taste the tradition in every bite.
                 </p>
-                <p class="p2"><i class="fa-solid fa-users"></i> We Care About Environment</p>
-                <p class="p2"><i class="fa-solid fa-users"></i> We Are Trusted By Hundreds Of Clients</p>
-                <p class="p2"><i class="fa-solid fa-users"></i> Social Media Loves Us!</p>
-                <p class="p2"><i class="fa-solid fa-users"></i> This List Is Super Easy To Create.</p>
+                <p class="p2"><i class="fa-solid fa-leaf"></i> We Care About the Environment</p>
+                <p class="p2"><i class="fa-solid fa-heart"></i> We Are Trusted By Hundreds Of Clients</p>
+                <p class="p2"><i class="fa-solid fa-thumbs-up"></i> Social Media Loves Us!</p>
+                <p class="p2"><i class="fa-solid fa-check-double"></i> This List Is Super Easy To Create.</p>
             </div>
         </section>
 
@@ -602,18 +612,11 @@
             <div class="colom">
                 <h2>Our Location</h2>
                 <p class="p1">
-                    Lorem Ipsum Dolor Sit Amet Consectetur Adipisicing Elit. Recusandae 
-                    Architecto Accusantium Expedita Fugiat Laudantium, Perferendis At Quisquam 
-                    Eos Amet Inventore? Tempora Quas, Aliquam Voluptates Sunt Odio 
-                    Accusamus! Aliquam Nostrum Rerum Fuga Laborum, Laboriosam Dignissimos 
-                    Sit Eveniet Atque, Corrupti Necessitatibus. Explicabo Tenetur. Lorem, Ipsum 
-                    Dolor Sit Amet Consectetur Adipisicing Elit. Excepturi Enim Impedit Temporibus 
-                    Aliquam Quis Numquam Eligendi Saepe Quibusdam Veritatis Hic!
+                    Nestled in the heart of downtown, our bakery isn't just a shop; it's a community hub. We've created a cozy, welcoming space where the aroma of freshly baked bread greets you at the door. Whether you're stopping by for your morning coffee and croissant or picking up a custom cake for a special occasion, our doors are always open to bring a little sweetness to your day.
                 </p>
             </div>
             <div class="img-container mg1">
-                <!-- Original Image: full-2-800x640.jpg -->
-                <img src="full-2-800x640.jpg" alt="Bakery Shop">
+                <img src="img/full-2-800x640.jpg" alt="Interior of our Bakery Shop">
             </div>
         </section>
 
@@ -621,44 +624,35 @@
         <section class="section3">
             <div>
                 <h2>Our Baking</h2>
-                <p>Lorem, Ipsum Dolor Sit Amet Consectetur Adipisicing Elit. Ducimus, Aut!</p>
+                <p>Handcrafted with love, baked fresh daily just for you.</p>
             </div>
         </section>
 
         <!-- Section 4: Offers / Cards -->
         <section class="section4" id="section4">
             <div class="div1">
-                <!-- Original Image: ben-garratt-134774-600x500.jpg -->
-                <img src="ben-garratt-134774-600x500.jpg" alt="Bread">
+                <img src="img/ben-garratt-134774-600x500.jpg" alt="Artisan Breads">
                 <h2>Superior Breads</h2>
                 <p>
-                    Lorem Ipsum Dolor Sit Amet Consectetur 
-                    Adipisicing Elit. Aut, Aspernatur Velit. 
-                    Deserunt Nam Dolor Harum.
+                    Baked fresh daily using traditional methods and organic flour. Crusty on the outside, soft and fluffy on the inside.
                 </p>
                 <h3><del>$18.00</del> $10.00</h3>
             </div>
             
             <div class="div2">
-                <!-- Original Image: stas-ovsky-123540-600x500.jpg -->
-                <img src="stas-ovsky-123540-600x500.jpg" alt="Donuts">
-                <h2>Donuts</h2>
+                <img src="img/stas-ovsky-123540-600x500.jpg" alt="Glazed Donuts">
+                <h2>Premium Donuts</h2>
                 <p>
-                    Lorem Ipsum Dolor Sit Amet Consectetur 
-                    Adipisicing Elit. Aut, Aspernatur Velit. 
-                    Deserunt Nam Dolor Harum.
+                    Hand-glazed and irresistibly fluffy. Our donuts come in various flavors, making them the perfect sweet treat.
                 </p>
                 <h3><del>$11.00</del> $8.00</h3>
             </div>
             
             <div class="div3">
-                <!-- Original Image: clem-onojeghuo-206832-600x500.jpg -->
-                <img src="clem-onojeghuo-206832-600x500.jpg" alt="Cookies">
-                <h2>Cookies</h2>
+                <img src="img/clem-onojeghuo-206832-600x500.jpg" alt="Chocolate Chip Cookies">
+                <h2>Choco Cookies</h2>
                 <p>
-                    Lorem Ipsum Dolor Sit Amet Consectetur 
-                    Adipisicing Elit. Aut, Aspernatur Velit. 
-                    Deserunt Nam Dolor Harum.
+                    Crispy on the edges, chewy in the center, and packed with premium dark chocolate chunks.
                 </p>
                 <h3><del>$24.00</del> $15.00</h3>
             </div>
@@ -670,36 +664,33 @@
                 <p>OUR MENU</p>
                 <h2>Bakery Menu</h2>
                 <ul>
-                    <li><a href="#">cake & tart</a></li>
-                    <li><a href="#">breads</a></li>
-                    <li><a href="#">cookies</a></li>
-                    <li><a href="#">pastries</a></li>
+                    <li><a href="#">Cakes & Tarts</a></li>
+                    <li><a href="#">Breads</a></li>
+                    <li><a href="#">Cookies</a></li>
+                    <li><a href="#">Pastries</a></li>
                 </ul>
-                <p>MENU</p>
-                <h2>Cake & Tart</h2>
+                <p>CATEGORY</p>
+                <h2>Cakes & Tarts</h2>
             </div>
 
             <!-- Menu Row 1 -->
             <div class="menu-row div2">
                 <div class="menu-item">
-                    <!-- Original Image: cookies800x760.jpg -->
-                    <img src="cookies800x760.jpg" alt="Tart">
-                    <h2>Tart</h2>
-                    <p>Lorem, Deren, Trataro, Filede, Nerada</p>
+                    <img src="img/cookies800x760.jpg" alt="Fresh Fruit Tart">
+                    <h2>Berry Tart</h2>
+                    <p>Flaky butter crust filled with vanilla cream and topped with fresh seasonal berries.</p>
                     <p class="red">$5.95</p>
                 </div>
                 <div class="menu-item">
-                    <!-- Original Image: cookies.jpg -->
-                    <img src="cookies.jpg" alt="Cookies">
-                    <h2>Cookies</h2>
-                    <p>Lorem, Deren, Trataro, Filede, Nerada</p>
+                    <img src="img/cookies.jpg" alt="Assorted Cookies">
+                    <h2>Assorted Cookies</h2>
+                    <p>A delightful box of our best-selling cookies, baked to golden perfection.</p>
                     <p class="red">$14.95</p>
                 </div>
                 <div class="menu-item">
-                    <!-- Original Image: i (1).webp -->
-                    <img src="i (1).webp" alt="Chocolate">
-                    <h2>Chocolate</h2>
-                    <p>Lorem, Deren, Trataro, Filede, Nerada</p>
+                    <img src="img/i (1).webp" alt="Chocolate Cake">
+                    <h2>Dark Choco Cake</h2>
+                    <p>Decadent, melt-in-your-mouth dark chocolate ganache layered with moist sponge.</p>
                     <p class="red">$8.95</p>
                 </div>
             </div>
@@ -707,24 +698,21 @@
             <!-- Menu Row 2 -->
             <div class="menu-row div4">
                 <div class="menu-item">
-                    <!-- Original Image: large_____________.jpg -->
-                    <img src="large_____________.jpg" alt="Cupcakes">
+                    <img src="img/large_____________.jpg" alt="Vanilla Cupcakes">
                     <h2>Cupcakes</h2>
-                    <p>Lorem, Deren, Trataro, Filede, Nerada</p>
+                    <p>Light, fluffy frosting atop our signature moist vanilla sponge. A bite-sized joy.</p>
                     <p class="red">$12.95</p>
                 </div>
                 <div class="menu-item">
-                    <!-- Original Image: i.webp -->
-                    <img src="i.webp" alt="Bread">
-                    <h2>Bread</h2>
-                    <p>Lorem, Deren, Trataro, Filede, Nerada</p>
+                    <img src="img/i.webp" alt="Sourdough Bread">
+                    <h2>Sourdough Bread</h2>
+                    <p>Crusty artisan sourdough baked in our stone hearth oven for the perfect tang.</p>
                     <p class="red">$12.95</p>
                 </div>
                 <div class="menu-item">
-                    <!-- Original Image: stas-ovsky-123540-600x500.jpg -->
-                    <img src="stas-ovsky-123540-600x500.jpg" alt="Donuts">
-                    <h2>Donuts</h2>
-                    <p>Lorem, Deren, Trataro, Filede, Nerada</p>
+                    <img src="img/stas-ovsky-123540-600x500.jpg" alt="Cinnamon Donuts">
+                    <h2>Cinnamon Donuts</h2>
+                    <p>Classic ring donuts, fried to golden perfection and coated in cinnamon sugar.</p>
                     <p class="red">$9.95</p>
                 </div>
             </div>
@@ -735,15 +723,14 @@
             <div class="div1">
                 <h2>Contact Information</h2>
                 <p>
-                    Lorem Ipsum Dolor Sit Amet Consectetur Adipisicing Elit. Facere, 
-                    Reprehenderit In Nulla Id Consectetur Ut.
+                    We would love to hear from you! Whether you have a question about our recipes, catering, or custom orders, our team is ready to answer all your questions.
                 </p>
                 <p style="margin-top:20px; font-weight:bold;">Our Contact Details</p>
                 <ul>
-                    <li><i class="fa-solid fa-location-dot"></i> Manchester St123-78B, Random 713, UK</li>
-                    <li><i class="fa-solid fa-phone"></i> +20 0155591586244</li>
-                    <li><i class="fa-solid fa-headset"></i> 015 9842385646558</li>
-                    <li><i class="fa-solid fa-envelope"></i> Welcome@Gmail.Com</li>
+                    <li><i class="fa-solid fa-location-dot"></i> Manchester St 123-78B, Random 713, UK</li>
+                    <li><i class="fa-solid fa-phone"></i> +20 0155 5915 8624</li>
+                    <li><i class="fa-solid fa-headset"></i> 015 9842 3856</li>
+                    <li><i class="fa-solid fa-envelope"></i> hello@familybakery.com</li>
                 </ul>
             </div>
             <div class="div2">
@@ -759,64 +746,38 @@
             <div class="div1">
                 <h2>About Us</h2>
                 <p>
-                    Lorem Ipsum Dolor Sit, Amet Consectetur 
-                    Adipisicing Elit. Magnam Fuga 
-                    Accusantium Voluptate Totam Unde Fugit, 
-                    Ab Ullam. Laudantium, Aut Nesciunt?
-                    <br><br>
-                    Lorem Ipsum Dolor Sit, Amet Consectetur 
-                    Adipisicing Elit. Magnam Fuga 
-                    Accusantium Voluptate Totam Unde Fugit, 
-                    Ab Ullam. Laudantium, Aut Nesciunt?
+                    Family Bakery has been serving the community with authentic, homemade baked goods for over three decades. Our commitment to quality ingredients and traditional baking methods makes every bite a nostalgic experience. Come visit us and taste the difference family makes.
                 </p>
             </div>
 
             <div class="div2">
                 <h2>Why We Are Special</h2>
-                <p>
-                    <p><i class="fa-solid fa-arrow-right"></i> Our Megical Recipe.</p>
-                    <hr>
-                    <p><i class="fa-solid fa-arrow-right"></i> We Care About Environment</p>
-                    <hr>
-                    <p><i class="fa-solid fa-arrow-right"></i> We Ar Trusted By Hundreds Of Clients.</p>
-                    <hr>
-                    <p><i class="fa-solid fa-arrow-right"></i> Social Media Loves Us!</p>
-                    <hr>
-                    <p><i class="fa-solid fa-arrow-right"></i> This List Is Super Easy To Create.</p>
-                    <hr>
-                </p>
+                <div class="list-item"><i class="fa-solid fa-arrow-right"></i> Our Magical Secret Recipes.</div><hr>
+                <div class="list-item"><i class="fa-solid fa-arrow-right"></i> We Care About Environment.</div><hr>
+                <div class="list-item"><i class="fa-solid fa-arrow-right"></i> We Are Trusted By Hundreds Of Clients.</div><hr>
+                <div class="list-item"><i class="fa-solid fa-arrow-right"></i> Social Media Loves Us!</div><hr>
+                <div class="list-item"><i class="fa-solid fa-arrow-right"></i> This List Is Super Easy To Create.</div><hr>
             </div>
 
             <div class="div3">
                 <h2>Opening Hours</h2>
-                <p>
-                    <p><i class="fa-solid fa-arrow-right"></i> Monday 10AM-9PM</p>
-                    <hr>
-                    <p><i class="fa-solid fa-arrow-right"></i> Tuesday 10AM-9PM</p>
-                    <hr>
-                    <p><i class="fa-solid fa-arrow-right"></i> Wednesday 10AM-10PM</p>
-                    <hr>
-                    <p><i class="fa-solid fa-arrow-right"></i> Thursday 10AM-10PM</p>
-                    <hr>
-                    <p><i class="fa-solid fa-arrow-right"></i> Friday 10AM-9PM</p>
-                    <hr>
-                </p>
+                <div class="list-item"><i class="fa-solid fa-arrow-right"></i> Monday 10AM - 9PM</div><hr>
+                <div class="list-item"><i class="fa-solid fa-arrow-right"></i> Tuesday 10AM - 9PM</div><hr>
+                <div class="list-item"><i class="fa-solid fa-arrow-right"></i> Wednesday 10AM - 10PM</div><hr>
+                <div class="list-item"><i class="fa-solid fa-arrow-right"></i> Thursday 10AM - 10PM</div><hr>
+                <div class="list-item"><i class="fa-solid fa-arrow-right"></i> Friday 10AM - 9PM</div><hr>
+                <div class="list-item"><i class="fa-solid fa-arrow-right"></i> Saturday 9AM - 11PM</div><hr>
+                <div class="list-item"><i class="fa-solid fa-arrow-right"></i> Sunday 9AM - 8PM</div><hr>
             </div>
 
             <div class="div4">
                 <h2>Contact Details</h2>
-                <p>
-                    <ul>
-                        <li><i class="fa-solid fa-location-dot"></i> Manchester St123-78B, Random 713, UK</li>
-                        <hr>
-                        <li><i class="fa-solid fa-phone"></i> +20 0155591586244</li>
-                        <hr>
-                        <li><i class="fa-solid fa-headset"></i> 015 9842385646558</li>
-                        <hr>
-                        <li><i class="fa-solid fa-envelope"></i> Welcome@Gmail.Com</li>
-                        <hr>
-                    </ul>
-                </p>
+                <ul>
+                    <li><i class="fa-solid fa-location-dot"></i> Manchester St 123-78B, Random 713, UK</li><hr>
+                    <li><i class="fa-solid fa-phone"></i> +20 0155 5915 8624</li><hr>
+                    <li><i class="fa-solid fa-headset"></i> 015 9842 3856</li><hr>
+                    <li><i class="fa-solid fa-envelope"></i> hello@familybakery.com</li><hr>
+                </ul>
             </div>
         </section>
 
